@@ -14,12 +14,10 @@ namespace Allspice.Controllers
   public class RecipesController : ControllerBase
   {
     private readonly RecipesService _rs;
-    private readonly AccountService _acctService;
 
-    public RecipesController(RecipesService rs, AccountService acctService)
+    public RecipesController(RecipesService rs)
     {
       _rs = rs;
-      _acctService = acctService;
     }
 
     [HttpGet]

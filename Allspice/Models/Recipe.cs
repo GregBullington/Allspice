@@ -9,4 +9,8 @@ namespace Allspice.Models
     public string CreatorId { get; set; }
 
   }
+  public class FavoriteViewModel : Recipe
+  {
+    public int FavoriteId { get; set; }
+  }
 }

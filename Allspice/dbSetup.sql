@@ -15,4 +15,33 @@ CREATE TABLE recipes(
     FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
 ) DEFAULT CHARSET UTF8 COMMENT '';
 
+CREATE TABLE ingredients(
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'Primary Key',
+    name VARCHAR(255) NOT NULL,
+    quantity VARCHAR(255) NOT NULL,
+    recipeId int NOT NULL,
+    FOREIGN KEY (recipeId) REFERENCES recipes(id) ON DELETE CASCADE
+) DEFAULT CHARSET UTF8 COMMENT '';
 
+CREATE TABLE steps(
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'Primary Key',
+    iOrder int NOT NULL,
+    body TEXT NOT NULL,
+    recipeId int NOT NULL,
+    FOREIGN KEY (recipeId) REFERENCES recipes(id) ON DELETE CASCADE
+) DEFAULT CHARSET UTF8 COMMENT '';
+
+CREATE TABLE favorites(  
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'Primary Key',
+    accountId VARCHAR(255) NOT NULL,
+    recipeId INT NOT NULL,
+
+    FOREIGN KEY (accountId)
+        REFERENCES accounts(id)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (recipeId)
+        REFERENCES recipes(id)
+        ON DELETE CASCADE
+
+) DEFAULT CHARSET UTF8 COMMENT '';
