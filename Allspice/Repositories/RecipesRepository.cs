@@ -22,7 +22,7 @@ namespace Allspice.Repositories
       return _db.Query<Recipe>(sql).ToList();
     }
 
-    internal Recipe Get(int id)
+    internal Recipe GetById(int id)
     {
       string sql = @"SELECT * FROM recipes WHERE id = @id;";
       return _db.QueryFirstOrDefault<Recipe>(sql, new { id });

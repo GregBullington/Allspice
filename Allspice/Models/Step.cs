@@ -6,5 +6,7 @@ namespace Allspice.Models
     public int IOrder { get; set; }
     public string Body { get; set; }
     public int RecipeId { get; set; }
+    public string CreatorId { get; set; }
+
   }
 }

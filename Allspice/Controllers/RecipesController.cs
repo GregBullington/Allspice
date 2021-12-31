@@ -35,11 +35,11 @@ namespace Allspice.Controllers
     }
     [HttpGet("{id}")]
 
-    public ActionResult<Recipe> Get(int id)
+    public ActionResult<Recipe> GetById(int id)
     {
       try
       {
-        var recipe = _rs.Get(id);
+        var recipe = _rs.GetById(id);
         return Ok(recipe);
       }
       catch (Exception e)
@@ -65,12 +65,15 @@ namespace Allspice.Controllers
       }
     }
     [HttpPut("{id}")]
-    public ActionResult<Recipe> Edit([FromBody] Recipe editedRecipe, int id)
+    [Authorize]
+
+    public async Task<ActionResult<Recipe>> EditAsync([FromBody] Recipe editedRecipe, int id)
     {
       try
       {
+        Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
         editedRecipe.Id = id;
-        Recipe recipe = _rs.Edit(editedRecipe);
+        Recipe recipe = _rs.Edit(editedRecipe, userInfo.Id);
         return Ok(editedRecipe);
       }
       catch (Exception e)
@@ -79,11 +82,14 @@ namespace Allspice.Controllers
       }
     }
     [HttpDelete]
-    public ActionResult<string> Remove(int id)
+    [Authorize]
+
+    public async Task<ActionResult<string>> RemoveAsync(int id)
     {
       try
       {
-        _rs.Remove(id);
+        Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+        _rs.Remove(id, userInfo.Id);
         return Ok("Recipe has been Deleted!");
       }
       catch (Exception e)

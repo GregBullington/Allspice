@@ -19,9 +19,9 @@ namespace Allspice.Services
       return _repo.Get();
     }
 
-    internal Recipe Get(int id)
+    internal Recipe GetById(int id)
     {
-      Recipe found = _repo.Get(id);
+      Recipe found = _repo.GetById(id);
       if (found == null)
       {
         throw new Exception("Invalid Id!");
@@ -32,18 +32,26 @@ namespace Allspice.Services
     {
       return _repo.Create(newRecipe);
     }
-    internal Recipe Edit(Recipe editedRecipe)
+    internal Recipe Edit(Recipe editedRecipe, string userId)
     {
-      Recipe oldRecipe = Get(editedRecipe.Id);
+      Recipe oldRecipe = GetById(editedRecipe.Id);
+      if (oldRecipe.CreatorId != userId)
+      {
+        throw new Exception("You cannot edit this Recipe!");
+      }
       editedRecipe.Title = editedRecipe.Title != null ? editedRecipe.Title : oldRecipe.Title;
       editedRecipe.Subtitle = editedRecipe.Subtitle != null ? editedRecipe.Subtitle : oldRecipe.Subtitle;
       editedRecipe.Category = editedRecipe.Category != null ? editedRecipe.Category : oldRecipe.Category;
       editedRecipe.CreatorId = editedRecipe.CreatorId != null ? editedRecipe.CreatorId : oldRecipe.CreatorId;
       return _repo.Edit(editedRecipe);
     }
-    internal void Remove(int id)
+    internal void Remove(int id, string userId)
     {
-      Recipe recipe = Get(id);
+      Recipe recipe = GetById(id);
+      if (recipe.CreatorId != userId)
+      {
+        throw new Exception("You cannot Delete this Recipe!");
+      }
       _repo.Remove(id);
     }
   }
