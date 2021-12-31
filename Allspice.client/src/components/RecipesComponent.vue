@@ -1,8 +1,16 @@
 <template>
-  <div class="Recipe card elevation-4 mb-4 mx-4 mt-2 selectable grow">
-    <div class="row">
+  <div class="row">
+    <div
+      class="col hero-container card elevation-4 selectable grow p-0 mx-3 mb-4"
+    >
       <img class="img-container" :src="recipe.imgUrl" alt="Recipe Image" />
-      <h2 class="det-text det-font">{{ recipe.category }}</h2>
+      <h2 class="pill-bg det-font top-left">{{ recipe.category }}</h2>
+      <div class="card desc-bg bottom-left det-font">
+        <h2 class="m-0">{{ recipe.title }}</h2>
+        <p class="fs-5 fst-italic fw-light m-0">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -26,59 +34,21 @@ export default {
 
 
 <style lang="scss" scoped>
-.det-text {
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.pill-bg {
   color: white;
+  background: rgba(0, 0, 0, 0.658);
+  padding-inline: 20px;
+  border-radius: 15px;
+}
+.desc-bg {
+  color: white;
+  background: rgba(0, 0, 0, 0.658);
+  padding-inline: 20px;
+  width: 100%;
+  border-radius: 0;
 }
 .img-container {
   height: 300px;
   object-fit: cover;
-}
-
-/* Container holding the image and the text */
-.container {
-  position: relative;
-  text-align: center;
-  color: white;
-}
-
-/* Bottom left text */
-.bottom-left {
-  position: absolute;
-  bottom: 8px;
-  left: 16px;
-}
-
-/* Top left text */
-.top-left {
-  position: absolute;
-  top: 8px;
-  left: 16px;
-}
-
-/* Top right text */
-.top-right {
-  position: absolute;
-  top: 8px;
-  right: 16px;
-}
-
-/* Bottom right text */
-.bottom-right {
-  position: absolute;
-  bottom: 8px;
-  right: 16px;
-}
-
-/* Centered text */
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 </style>

@@ -66,6 +66,9 @@ form:invalid button[type="submit"] {
 .grow:hover {
   transform: scale(1.06);
 }
+.grow:hover img {
+  filter: blur(3px);
+}
 
 .floating-btn-left {
   z-index: 100;
@@ -112,4 +115,38 @@ form:invalid button[type="submit"] {
 }
 .floating-btn-right:active {
   background: #007d63;
+}
+.hero-container {
+  position: relative;
+}
+
+.bottom-left {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+.top-left {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
