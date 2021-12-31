@@ -39,7 +39,20 @@
             </div>
           </div>
         </div>
-        <button class="mdi mdi-account floating-btn-left"></button>
+        <button
+          @click="login"
+          class="site-font floating-btn-left fs-6"
+          v-if="!user.isAuthenticated"
+        >
+          Login
+        </button>
+        <button
+          class="mdi mdi-account floating-btn-left"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasRight"
+          aria-controls="offcanvasRight"
+          v-else
+        ></button>
         <button class="mdi mdi-plus floating-btn-right"></button>
 
         <!-- End Hero -->
@@ -66,6 +79,7 @@
       </div>
     </div>
   </div>
+  <AccountOffCanvas />
 </template>
 
 <script>
@@ -75,6 +89,7 @@ import { onMounted } from "@vue/runtime-core"
 import Pop from "../utils/Pop"
 import { recipesService } from "../services/RecipesService"
 import { logger } from "../utils/Logger"
+import { AuthService } from "../services/AuthService"
 export default {
   name: 'Home',
   setup() {
@@ -91,6 +106,10 @@ export default {
       user: computed(() => AppState.user),
       recipes: computed(() => AppState.recipes),
       search,
+
+      async login() {
+        AuthService.loginWithPopup()
+      },
 
       async searchRecipes() {
         try {
