@@ -81,7 +81,7 @@ namespace Allspice.Controllers
         return BadRequest(e.Message);
       }
     }
-    [HttpDelete]
+    [HttpDelete("{id}")]
     [Authorize]
 
     public async Task<ActionResult<string>> RemoveAsync(int id)

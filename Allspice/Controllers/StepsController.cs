@@ -35,7 +35,7 @@ namespace Allspice.Controllers
       }
     }
 
-    [HttpGet("{recipeId}")]
+    [HttpGet("recipe/{recipeId}")]
     public ActionResult<IEnumerable<Step>> GetByRecipeId(int recipeId)
     {
       try
