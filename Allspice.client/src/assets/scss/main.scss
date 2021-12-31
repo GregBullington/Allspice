@@ -36,3 +36,80 @@ form:invalid button[type="submit"] {
   filter: grayscale(1);
   pointer-events: none;
 }
+
+.hero-text {
+  font-family: 'Sahitya', serif;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.site-font a {
+  font-family: 'Sahitya', serif;
+  color: #009879!important;
+}
+.det-font {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  color: #FDFDFD;
+}
+.grow {
+  transition: all 0.2s ease-in-out;
+}
+
+.grow:hover {
+  transform: scale(1.06);
+}
+
+.floating-btn-left {
+  z-index: 100;
+  width: 50px;
+  height: 50px;
+  background: #009879;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  font-size: 32px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+  position: fixed;
+  left: 25px;
+  bottom: 25px;
+  transition: background 0.25s;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.floating-btn-right {
+  z-index: 100;
+  width: 50px;
+  height: 50px;
+  background: #009879;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  font-size: 32px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  transition: background 0.25s;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.floating-btn-left:active {
+  background: #007d63;
+}
+.floating-btn-right:active {
+  background: #007d63;
+}
