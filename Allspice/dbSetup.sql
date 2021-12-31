@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS accounts(
 CREATE TABLE recipes(  
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'Primary Key',
     title VARCHAR(255) NOT NULL,
+    imgUrl TEXT NOT NULL,
     subTitle VARCHAR(255) NOT NULL,
     category VARCHAR(255) NOT NULL,
     creatorId VARCHAR(255) NOT NULL,

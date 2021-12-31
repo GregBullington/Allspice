@@ -31,8 +31,8 @@ namespace Allspice.Repositories
     internal Recipe Create(Recipe newRecipe)
     {
       string sql = @"INSERT INTO recipes
-      (title, subtitle, category, creatorId)
-      VALUE(@title, @subtitle, @category, @creatorId)
+      (title, imgUrl, subtitle, category, creatorId)
+      VALUE(@Title, @ImgUrl, @Subtitle, @Category, @CreatorId)
       ;SELECT LAST_INSERT_ID();";
 
       int id = _db.ExecuteScalar<int>(sql, newRecipe);
@@ -43,7 +43,7 @@ namespace Allspice.Repositories
     internal Recipe Edit(Recipe editedRecipe)
     {
       string sql = @"UPDATE recipes
-      SET title = @Title, subtitle = @Subtitle, category = @Category, creatorId = @CreatorId
+      SET title = @Title, imgUrl = @ImgUrl, subtitle = @Subtitle, category = @Category, creatorId = @CreatorId
       WHERE id = @Id;";
       int rows = _db.Execute(sql, editedRecipe);
       if (rows <= 0)

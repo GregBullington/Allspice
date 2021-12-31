@@ -40,6 +40,7 @@ namespace Allspice.Services
         throw new Exception("You cannot edit this Recipe!");
       }
       editedRecipe.Title = editedRecipe.Title != null ? editedRecipe.Title : oldRecipe.Title;
+      editedRecipe.ImgUrl = editedRecipe.ImgUrl != null ? editedRecipe.ImgUrl : oldRecipe.ImgUrl;
       editedRecipe.Subtitle = editedRecipe.Subtitle != null ? editedRecipe.Subtitle : oldRecipe.Subtitle;
       editedRecipe.Category = editedRecipe.Category != null ? editedRecipe.Category : oldRecipe.Category;
       editedRecipe.CreatorId = editedRecipe.CreatorId != null ? editedRecipe.CreatorId : oldRecipe.CreatorId;
