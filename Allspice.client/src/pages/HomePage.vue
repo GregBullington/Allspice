@@ -3,6 +3,7 @@
     <div class="row">
       <div class="col">
         <!-- Hero Image -->
+
         <div class="card elevation-4 mt-2 hero-image">
           <div class="row justify-content-end align-items-center">
             <div class="col-md-5">
@@ -53,9 +54,16 @@
           aria-controls="offcanvasRight"
           v-else
         ></button>
-        <button class="mdi mdi-plus floating-btn-right"></button>
+        <button
+          class="mdi mdi-plus floating-btn-right"
+          data-bs-toggle="modal"
+          data-bs-target="#recipeModal"
+        ></button>
 
         <!-- End Hero -->
+
+        <!-- Nav -->
+
         <div class="row justify-content-center px-5">
           <div class="card bg-light elevation-3 col-lg-6 mb-2 nav-card">
             <div class="d-inline-flex p-2 justify-content-between site-font">
@@ -71,15 +79,31 @@
             </div>
           </div>
         </div>
+
+        <!-- end Nav -->
       </div>
     </div>
+
+    <!-- Recipes -->
+
     <div class="row justify-content-around">
-      <div v-for="r in recipes" :key="r.id" class="col-md-4">
+      <div
+        v-for="r in recipes"
+        :key="r.id"
+        class="col-md-4"
+        @click="setActive(r)"
+        data-bs-toggle="modal"
+        data-bs-target="#detailsModal"
+      >
         <RecipesComponent :recipe="r" />
       </div>
     </div>
+
+    <!-- end Recipes -->
   </div>
   <AccountOffCanvas />
+  <RecipeModal />
+  <DetailsModal />
 </template>
 
 <script>
@@ -118,6 +142,17 @@ export default {
           search.value = ''
         } catch (error) {
           logger.error(error)
+        }
+      },
+
+      async setActive(recipe) {
+        try {
+          AppState.activeRecipe = recipe
+          await recipesService.getActiveSteps(recipe.id)
+          await recipesService.getActiveIngredients(recipe.id)
+        } catch (error) {
+          logger.error(error)
+          Pop.toast("Something went wrong setting active recipe!", 'error')
         }
       },
 
