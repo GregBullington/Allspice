@@ -1,6 +1,6 @@
 <template>
   <div
-    class="modal fade"
+    class="modal fade modal-dialog-bg"
     id="detailsModal"
     aria-hidden="true"
     aria-labelledby="detailsModal"
@@ -186,5 +186,8 @@ export default {
   outline: none;
   box-shadow: none;
   border: none;
+}
+.modal-dialog-bg {
+  backdrop-filter: blur(5px);
 }
 </style>
